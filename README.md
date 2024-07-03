@@ -1,1 +1,1 @@
-# mariner
+# MaRINeR: Enhancing Novel Views by Matching Rendered Images with Nearby References
