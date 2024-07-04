@@ -155,3 +155,26 @@ body {
 #interpolation-image-wrapper img {
   border-radius: 5px;
 }
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, auto);
+  gap: 10px;
+  padding: 10px;
+}
+.grid-container-3by3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, auto);
+  gap: 10px;
+  padding: 10px;
+}
+
+.grid-container-2by2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 10px;
+  padding: 10px;
+}
