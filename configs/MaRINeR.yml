@@ -1,0 +1,75 @@
+# lightning.pytorch==2.1.0
+comment: MaRINeR
+seed_everything: 42
+batch_size: 9
+
+trainer:
+  accelerator: auto
+  strategy: auto
+  devices: auto
+  max_epochs: 80
+  min_epochs: 1
+model:
+  class_path: models.mariner_module.MARINER
+  init_args:
+    optimizer:
+      class_path: torch.optim.Adam
+      init_args:
+        lr: 0.0001
+        weight_decay: 0
+    scheduler:
+      class_path: torch.optim.lr_scheduler.CosineAnnealingLR
+      init_args:
+        T_max: 80
+    loss: 
+      - class_path: models.components.losses.L1Loss
+      - class_path: models.components.losses.PerceptualLossMASA
+        init_args:
+          enabled: False
+      - class_path: models.components.losses.PerceptualLossMARINER
+        init_args:
+          weight: 0.1
+      - class_path: models.components.losses.AdversarialLoss
+        init_args:
+          weight: 0.001
+          start_epoch: 60
+          start_iter: 1
+    ckpt_epochs: [59]
+    iterations: 2
+    tb_log_images: [00608.png, 00634.png, 00693.png, 00703.png, 00799.png]
+    net:
+     class_path: models.components.archs.ArchitectureMARINER
+     init_args:
+      in_out_skip: False
+      encoder: 
+        class_path: models.components.encoder.EncoderMARINER
+      decoder:
+        class_path: models.components.decoder.DecoderMARINER
+      attention: 
+        class_path: models.components.attention.PatchMatchAttentionMARINER
+
+data:
+  class_path: data.datamodule.DataLoaderREFRR
+  init_args:
+    num_workers: 4
+    pin_memory: False
+    data_train:
+      class_path: data.dataset.REFRR
+      init_args:
+        stage: fit
+        data_augmentation: False
+        random_ref_prob: 1.0
+    data_val:
+      class_path: data.dataset.REFRR
+      init_args:
+        stage: validation
+        use_gt_as_ref: True
+    data_test:
+      class_path: data.dataset.REFRR
+      init_args:
+        stage: test
+        use_gt_as_ref: True
+    data_pred:
+      class_path: data.dataset.REFRR
+      init_args:
+        stage: predict
