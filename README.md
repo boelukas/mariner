@@ -107,10 +107,19 @@ python scripts/eval_metrics.py \
             /path/to/the/test_data/dataset/gt
 ```
 
+## Citation
+If you find our work useful, please consider citing:
+```BibTeX
+@misc{bösiger2024marinerenhancingnovelviews,
+      title={MaRINeR: Enhancing Novel Views by Matching Rendered Images with Nearby References}, 
+      author={Lukas Bösiger and Mihai Dusmanu and Marc Pollefeys and Zuria Bauer},
+      year={2024},
+      eprint={2407.13745},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2407.13745}, 
+}
+```
+
 ## Acknowledgement
 We borrow some code from [MASA-SR](https://github.com/dvlab-research/MASA-SR).
-
-<!-- TODO: ## Citation
-```shell
-TODO
-``` -->
