@@ -1,5 +1,5 @@
 # MaRINeR: Enhancing Novel Views by Matching Rendered Images with Nearby References
-[Project Page](https://boelukas.github.io/mariner/) 
+[Project Page](https://boelukas.github.io/mariner/) | [Paper](http://arxiv.org/abs/2407.13745)
 <!-- TODO: | [Paper]() | [Video]() -->
 
 This repository contains code for the paper "MaRINeR: Enhancing Novel Views by Matching Rendered Images with Nearby References", ECCV 2024.
